@@ -1,0 +1,22 @@
+{
+  "name": "screeps-commander",
+  "version": "1.0.0",
+  "description": "util to sync code with screeps",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Mormehtar/screeps-commander.git"
+  },
+  "keywords": [
+    "screeps"
+  ],
+  "author": "Dark Rider",
+  "license": "GNU",
+  "bugs": {
+    "url": "https://github.com/Mormehtar/screeps-commander/issues"
+  },
+  "homepage": "https://github.com/Mormehtar/screeps-commander#readme"
+}

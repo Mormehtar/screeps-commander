@@ -18,5 +18,9 @@
   "bugs": {
     "url": "https://github.com/Mormehtar/screeps-commander/issues"
   },
-  "homepage": "https://github.com/Mormehtar/screeps-commander#readme"
+  "homepage": "https://github.com/Mormehtar/screeps-commander#readme",
+  "dependencies": {
+    "cli": "^1.0.1",
+    "debug": "^3.0.0"
+  }
 }

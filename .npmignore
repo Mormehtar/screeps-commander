@@ -1,3 +1,5 @@
+# Created by .ignore support plugin (hsz.mobi)
+### Node template
 # Logs
 logs
 *.log
@@ -58,4 +60,5 @@ typings/
 .env
 
 config.json
+.gitignore
 src/

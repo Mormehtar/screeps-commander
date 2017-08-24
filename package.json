@@ -1,6 +1,6 @@
 {
   "name": "screeps-commander",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "Util to sync code with Screeps",
   "main": "index.js",
   "bin" : { "screeps-commander" : "./index.js" },

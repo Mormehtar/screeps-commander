@@ -16,7 +16,7 @@ module.exports = function (params, modules) {
         --index;
       }
       const tree = keyChain.slice(0, index).concat(reqChain).filter(str => !!str);
-      return `require('${tree.join('.')})`;
+      return `require('${tree.join('.')}')`;
     });
 
     return { name: keyChain.concat(parsed.name).filter(str => !!str).join('.'), module: output };

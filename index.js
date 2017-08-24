@@ -1,3 +1,4 @@
+#!/usr/bin/env node
 const debug = require('debug')('Commander:Index');
 
 const pull = require('./pull');

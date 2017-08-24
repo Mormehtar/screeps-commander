@@ -16,8 +16,9 @@ const params = CLI.parse({
 
 if (!params.env) { params.env = false; }
 
-if (fs.existsSync(params.config)) {
-  const config = require(params.config);
+const configPath = path.resolve(params.config);
+if (fs.existsSync(configPath)) {
+  const config = require(configPath);
   if (params.env) {
     Object.assign(params, config[params.env]);
   } else {

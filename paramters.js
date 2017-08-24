@@ -5,7 +5,8 @@ const CLI = require('cli');
 const params = CLI.parse({
   login: ['l', 'User login', 'string'],
   password: ['p', 'User password', 'string'],
-  host: [false, 'Screeps host', 'url', 'https://screeps.com'],
+  host: [false, 'Screeps host', 'url', 'screeps.com'],
+  port: [false, 'Screeps port', 'int', 443],
   config: [false, 'Path to config file', 'file', './config.json'],
   env: ['e', 'Key to look for configuration in config file.', 'string' ,''],
   source: ['s', 'Path to directory with sources', 'directory', './src'],

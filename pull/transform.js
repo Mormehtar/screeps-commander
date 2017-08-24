@@ -8,8 +8,8 @@ function transform(key, module) {
     name: path.join(...pathChain),
     module: module.replace(/require\(['"](.+)['"]\)/g, (match, reqPath) => {
       let reqChain = reqPath.split('.');
-      debug(pathChain);
-      debug(reqChain);
+      debug('pathChain', pathChain);
+      debug('reqChain', reqChain);
       if (pathChain.length === 1) {
         reqChain.unshift('.');
       } else {
@@ -23,8 +23,13 @@ function transform(key, module) {
             index = i;
           }
         }
+        debug('tree', tree);
+        debug('found', found);
+        debug('index', index);
         if (found) {
           tree = tree.concat(pathChain.slice(index));
+        } else {
+          tree = pathChain.map(() => '..').concat(reqChain);
         }
         reqChain = tree;
       }

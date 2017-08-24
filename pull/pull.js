@@ -1,4 +1,4 @@
-const debug = require('debug')('Commander:Pull');
+const debug = require('debug')('Commander:Pull:Pull');
 const https = require('https');
 const Promise = require('bluebird');
 

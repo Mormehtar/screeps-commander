@@ -1,4 +1,4 @@
-const debug = require('debug')('Commander:Transform');
+const debug = require('debug')('Commander:Pull:Transform');
 const path = require('path');
 
 function transform(key, module) {
@@ -6,7 +6,7 @@ function transform(key, module) {
 
   return {
     name: path.join(...pathChain),
-    module: module.replace(/require\(['"](.+)['"]\)/g, (match, reqPath) => {
+    module: module.replace(/require\s*\(\s*['"](.+)['"]\s*\)/g, (match, reqPath) => {
       let reqChain = reqPath.split('.');
       debug('pathChain', pathChain);
       debug('reqChain', reqChain);

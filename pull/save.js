@@ -1,4 +1,4 @@
-const debug = require('debug')('Commander:Save');
+const debug = require('debug')('Commander:Pull:Save');
 const path = require('path');
 const fs = require('fs');
 const rimraf = require('rimraf');

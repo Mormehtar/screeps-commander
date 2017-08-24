@@ -1,10 +1,12 @@
 const debug = require('debug')('Commander:Index');
 
 const pull = require('./pull');
+const push = require('./push');
 const arguments = require('./paramters');
 
 debug(arguments);
 
-if (arguments.command === 'pull') {
-  return pull(arguments);
+switch (arguments.command) {
+  case 'pull': return pull(arguments);
+  case 'push': return push(arguments);
 }

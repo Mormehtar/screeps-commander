@@ -12,8 +12,8 @@
     "screeps", "pull", "push"
   ],
   "author": {
-    "name" : "Ilya Volkov"
-  , "email" : "mormehtar@gmail.com"
+    "name" : "Ilya Volkov",
+    "email" : "mormehtar@gmail.com"
   },
   "license": "GNU",
   "bugs": {

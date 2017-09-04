@@ -1,11 +1,13 @@
 const debug = require('debug')('Commander:Pull:Transform');
 const path = require('path');
 
-function transform(key, module) {
-  const pathChain = key.split('.');
+function splitKey(key) {
+  return key.split('.');
+}
 
+function transform(pathChain, module, isIndex) {
   return {
-    name: path.join(...pathChain),
+    name: isIndex ? path.join(...pathChain, 'index') : path.join(...pathChain),
     module: module.replace(/require\s*\(\s*['"](.+)['"]\s*\)/g, (match, reqPath) => {
       let reqChain = reqPath.split('.');
       debug('pathChain', pathChain);
@@ -42,12 +44,13 @@ function transform(key, module) {
 }
 
 module.exports = function (params, modules) {
-  return Object.keys(modules).map(key => {
-    return modules[key] ? transform(key, modules[key]) : null
-  })
-    .filter(data => !!data)
-    .reduce((obj, data) => {
-      obj[data.name] = data.module;
-      return obj;
-    }, {})
+  return _.sortBy(Object.keys(modules)
+    .map(key => {
+      return { key, pathChain: splitKey(key), module: modules[key] };
+    })
+    .filter(data => !!data.module), ['key'])
+    .map((data, index, arr) => {
+      let isIndex = arr[index].key === arr[index + 1].key.substr(0, arr[index].key.length);
+      return transform(data.pathChain, data.module, isIndex);
+    });
 };

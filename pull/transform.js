@@ -44,13 +44,22 @@ function transform(pathChain, module, isIndex) {
 }
 
 module.exports = function (params, modules) {
-  return _.sortBy(Object.keys(modules)
+  const m = Object.keys(modules)
     .map(key => {
       return { key, pathChain: splitKey(key), module: modules[key] };
     })
-    .filter(data => !!data.module), ['key'])
-    .map((data, index, arr) => {
-      let isIndex = arr[index].key === arr[index + 1].key.substr(0, arr[index].key.length);
-      return transform(data.pathChain, data.module, isIndex);
-    });
+    .filter(data => !!data.module);
+  m.sort((m1, m2) => {
+    if (m1.key > m2.key) { return 1; }
+    if (m1.key < m2.key) { return -1; }
+    return 0;
+  });
+  return m.map((data, index, arr) => {
+    let isIndex = index < arr.length - 1 && arr[index].key === arr[index + 1].key.substr(0, arr[index].key.length);
+    return transform(data.pathChain, data.module, isIndex);
+  })
+    .reduce((obj, module) => {
+      obj[module.name] = module.module;
+      return obj;
+    }, {});
 };

@@ -22,5 +22,5 @@ Don't forget to add it to `.gitignore`!
 Also library converts Screeps file-structure to folders using `.` as delimiter.
 And updates `require` statements accordingly. And transforms this structure back on push.
 
-*But it does not handle case of index.js*
-(`blah/blah/index.js` will be transformed to `blah.blah.index`). 
+*From version 1.1.0 can handle index files*
+(`blah/blah/index.js` will be transformed to `blah.blah` and back).

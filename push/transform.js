@@ -19,7 +19,7 @@ module.exports = function (params, modules) {
       return `require('${tree.join('.')}')`;
     });
 
-    return { name: keyChain.concat(parsed.name).filter(str => !!str).join('.'), module: output };
+    return { name: (parsed.name === 'index' ? keyChain : keyChain.concat(parsed.name)).filter(str => !!str).join('.'), module: output };
   })
     .reduce((obj, element) => {
       obj[element.name] = element.module;
